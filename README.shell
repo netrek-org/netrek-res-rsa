@@ -1,0 +1,16 @@
+$Id: README.shell,v 1.1 2000/02/17 05:57:22 ahn Exp $
+
+README file for the RES-RSA shell package
+
+Version: RES-RSA shell 2.9.1
+
+This package is for the Netrek RES-RSA source maintainers only.  DO
+NOT USE THIS PACKAGE to build RSA-enabled clients and servers.  DO NOT
+ADD CRYPTOGRAPHIC ALGORITHMS IN ANY FORM TO THIS PACKAGE.
+
+This software contains no cryptographic algorithms, so it is not
+protected by U.S. export restrictions on encryption technology.  This
+package does contain all non-crypto support files (such as Makefile,
+configure, math functions) that should remain common to both the
+U.S. and International RES-RSA packages.
+

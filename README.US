@@ -1,0 +1,32 @@
+$Id: README.US,v 1.1 2000/02/17 05:57:22 ahn Exp $
+
+Version: 2.9.1
+
+README file for U.S. RES-RSA source package for Netrek clients and servers
+
+If this package does not compile on your platform, please send mail to
+rsakey@us.netrek.org. DO NOT SEND PATCHES, DIFFs or ANY SOURCE CODE. 
+
+--
+
+This software is protected by U.S. export restrictions on encryption
+technology.  The RSA algorithm is patented by RSA Laboratories.  Note
+that RES-RSA was written specifically for Netrek with permission from
+RSA Labs.  See the LICENSE file for details.
+
+Many Netrek servers are RSA-enabled and require special RSA-enabled
+"blessed" client binaries for gameplay.  This requirement prevents
+individuals from downloading a client and adding special "borgish"
+features (such as auto-phasers, cloakers on tactical, etc.) to gain
+unfair advantages over others.
+
+Both the clients and servers use the patented RSA algorithm, which is
+a form of public key cryptography, for client validation.  You will
+need access to this RES-RSA package only if you plan to run an
+RSA-enabled server or build an RSA-enabled client.  If you are
+building a client, please check with the client maintainer(s) to see
+if a blessed version is already available.
+
+For installation instructions, read INSTALL.
+
+-da
