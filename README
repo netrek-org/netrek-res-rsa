@@ -1,4 +1,4 @@
-$Id: README,v 1.1 2000/03/14 00:28:47 ahn Exp $
+$Id: README,v 1.2 2000/03/14 00:35:21 ahn Exp $
 
 --
 
@@ -83,12 +83,14 @@ The RSA algorithm is patented in the United States.  Ray Jones
 received special permission from RSA Labs to use the RSA algorithm for
 Netrek and to distribute the source code and compiled binaries for
 non-commercial purposes.  Dave Ahn verified this permission again with
-RSA Labs in 1999.  Users of the RES-RSA package must agree to the
-RSAREF licensing terms (see the LICENSE.US file).
+RSA Labs in 1999.  U.S. users of the RES-RSA package must agree to the
+RSAREF licensing terms (see the LICENSE.US file).  The RSAREF license
+does not apply to non-U.S. users.
 
 Outside of the United States, the legality of the use of RES-RSA
 depends upon local, state and national laws governing those users.  But
-in general, most users in the western hemisphere are in the clear.
+in general, most users in the western hemisphere are free to use and
+distribute RES-RSA.
 
 
 8. What about U.S. export regulations?
