@@ -1,11 +1,11 @@
-$Id: INSTALL,v 1.1 2000/02/17 05:57:22 ahn Exp $
+$Id: INSTALL,v 1.2 2000/03/14 00:28:47 ahn Exp $
 
 Installation procedure for the RES-RSA package
 --
 
-As of U.S. RES-RSA 2.9.1 and Euro RES-RSA 2.9, all non-crypto code has
-been merged to provide a consistent interface.  The only differences
-between the two packages are the rsa_encode* and mkkey.c files.
+As of March 13, 2000, there is a single RES-RSA package that can be
+used by both U.S. and international users.  See the README and
+README.US for details on exporting this software.
 
 For the Vanilla server, simply untar this package into the
 Vanilla/res-rsa directory before running the configure script.  RSA
