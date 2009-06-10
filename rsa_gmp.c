@@ -1,5 +1,5 @@
 /*
- * $Id: rsa_gmp.c,v 1.1 2000/02/17 05:57:22 ahn Exp $
+ * $Id: rsa_gmp.c,v 1.2 2009/06/10 03:05:47 ahn Exp $
  *
  * This is the server-side RSA math support code that uses the GNU MP
  * library.  Berkeley MP is no longer supported.  No crypto code is
@@ -8,8 +8,8 @@
  * Originally written by Ray Jones.  Updated by Dave Ahn.
  * */
 
-#include <gmp.h>
 #include "config.h"
+#include <gmp.h>
 #include "rsa_gmp.h"
 
 /* convert from unsigned char array to GMP form */

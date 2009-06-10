@@ -1,5 +1,5 @@
 /*
- * $Id: mkkey.c,v 1.1 2000/03/14 00:28:47 ahn Exp $
+ * $Id: mkkey.c,v 1.2 2009/06/10 03:05:47 ahn Exp $
  *
  * This program creates the public, private and modulo keys for Netrek
  * RSA verification, writes out a keycap file, and generates an RSA
@@ -67,6 +67,7 @@
 
 static char version[] = "[RES-RSA 2.9.2: Mar. 13, 2000][GMP]";
 
+#include "config.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -76,6 +77,7 @@ static char version[] = "[RES-RSA 2.9.2: Mar. 13, 2000][GMP]";
 #include <ctype.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <time.h>
 
 /* mkkey now only supports GMP only, no Berkeley MP */
 #ifndef WIN32
@@ -91,9 +93,6 @@ static char version[] = "[RES-RSA 2.9.2: Mar. 13, 2000][GMP]";
 #define getgid() GetCurrentProcessId()
 
 #endif /* WIN32 */
-
-#include "config.h"
-
 
 #if __GNU_MP_VERSION < 2
 
