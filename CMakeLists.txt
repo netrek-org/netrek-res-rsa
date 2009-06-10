@@ -20,7 +20,7 @@ set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_INCLUDE_DIRECTORIES_PROJECT_BEFORE ON)
 
 project(res-rsa C)
-set(VERSION "2.9.2")
+set(VERSION "2.9.3")
 
 OPTION(WITH_ANSI "enforce strict ISO C++ conforming" ON)
 OPTION(VERBOSE "show cmake command line" OFF)

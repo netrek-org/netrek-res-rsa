@@ -15,7 +15,7 @@ AC_C_INLINE
 # Check to see if GMP exists.
 #
 
-GMP_VER=0
+GMP_VER=-1
 GMP_INC=""
 GMP_LIB=""
 GMP_DIR=""
@@ -24,11 +24,11 @@ GMP_DIR=""
 
 AC_ARG_WITH(gmp,
   [  --with-gmp[=DIR]        enable gmp support [DIR=yes, no, or gmp dir]]
-  [                          (e.g. ../gmp-1.3.2, /usr/gnu /usr/local/gnu)],
+  [                          (e.g. ../gmp-1.3.2, ../gmp-2.0.2)],
   [
     case "$withval" in
       no)
-        GMP_VER=-1
+        GMP_VER=-2
         ;;
       yes)
         ;;
@@ -44,12 +44,11 @@ AC_ARG_WITH(gmp,
 # both "/usr/gnu/include" and "/usr/gnu/lib"
 
 GMP_PATH="$srcdir/gmp $srcdir/gmp-1.3.2 $srcdir/gmp-2.0.2 $srcdir/../gmp \
-          $srcdir/../gmp-1.3.2 $srcdir/../gmp-2.0.2 /usr/gnu /usr/local \
-          /usr/unsupported /usr/local/gnu"
+          $srcdir/../gmp-1.3.2 $srcdir/../gmp-2.0.2"
 
 # If GMP is not disabled...
 
-if test $GMP_VER != -1; then
+if test $GMP_VER != -2; then
 
   # If GMP directory was specified, do some smart checking
   if test "$GMP_DIR" != ""; then
@@ -62,27 +61,24 @@ if test $GMP_VER != -1; then
 
     for path in $GMP_PATH; do
       if test -r $path/gmp.h; then
-        GMP_VER=1
+        GMP_VER=0
         GMP_INC="-I$path"
         break
-      fi
-      if test -r $path/include/gmp.h; then
-        GMP_VER=1
+      elif test -r $path/include/gmp.h; then
+        GMP_VER=0
         GMP_INC="-I$path/include"
         break
       fi
     done
 
-    if test $GMP_VER = 1; then
+    if test $GMP_VER = 0; then
       AC_MSG_RESULT(found in $GMP_INC)
     else
       AC_MSG_RESULT(not found)
     fi
 
     # search for the library file only if header was found
-    if test $GMP_VER = 1; then
-
-      GMP_VER=0
+    if test $GMP_VER = 0; then
 
       AC_MSG_CHECKING(for local libgmp.a)
 
@@ -119,17 +115,22 @@ if test $GMP_VER != -1; then
   # If no GMP found yet, search the default system locations for it
   # We want any local copy of GMP to override the system GMP
 
-  if test $GMP_VER = 0; then
+  if test $GMP_VER = -1; then
 
-    AC_CHECK_HEADER(gmp.h, AC_DEFINE(HAVE_GMP_H) GMP_VER=1)
+    AC_CHECK_HEADER(gmp.h, AC_DEFINE(HAVE_GMP_H) GMP_VER=0)
 
-    if test $GMP_VER = 1; then
-      AC_CHECK_LIB(gmp, mpz_init, AC_DEFINE(HAVE_LIB_GMP), GMP_VER=0)
+    if test $GMP_VER = 0; then
+      AC_CHECK_LIB(gmp, mpz_init, AC_DEFINE(HAVE_LIB_GMP) GMP_VER=1)
     fi
 
     # Check for GMP2
-    if test $GMP_VER = 1; then
+    if test $GMP_VER = 0; then
       AC_CHECK_LIB(gmp, mpz_fdiv_q_ui, AC_DEFINE(HAVE_LIB_GMP2) GMP_VER=2)
+    fi
+
+    # Check for GMP3
+    if test $GMP_VER = 0; then
+      AC_CHECK_LIB(gmp, __gmpz_init, AC_DEFINE(HAVE_LIB_GMP3) GMP_VER=3)
     fi
 
   fi
@@ -151,6 +152,10 @@ case $GMP_VER in
     ;;
    2)
     echo GMP 2.x found, building librsa.a, librsa-gmp.a, mkkey.
+    GMP_TARGETS="librsa-gmp.a mkkey"
+    ;;
+   3)
+    echo GMP 3.x found, building librsa.a, librsa-gmp.a, mkkey.
     GMP_TARGETS="librsa-gmp.a mkkey"
     ;;
    *)

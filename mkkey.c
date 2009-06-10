@@ -1,5 +1,5 @@
 /*
- * $Id: mkkey.c,v 1.2 2009/06/10 03:05:47 ahn Exp $
+ * $Id: mkkey.c,v 1.3 2009/06/10 03:31:26 ahn Exp $
  *
  * This program creates the public, private and modulo keys for Netrek
  * RSA verification, writes out a keycap file, and generates an RSA
@@ -65,7 +65,7 @@
  * static char version[] = "[atm: July 4, 1993] based on [sls: June 7, 1993]";
  */
 
-static char version[] = "[RES-RSA 2.9.2: Mar. 13, 2000][GMP]";
+static char version[] = "[RES-RSA 2.9.3: June 9, 2009][GMP]";
 
 #include "config.h"
 #include <stdio.h>
